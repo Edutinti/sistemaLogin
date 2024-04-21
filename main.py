@@ -21,9 +21,9 @@ while True:
         janela_principal.hide()
 
         layot_cadastro = [
-        [sg.Text('LoginCad'), sg.InputText()],
-        [sg.Text('SenhaCad'), sg.InputText(password_char='*')],
-        [sg.Button('SalvarCad')],
+        [sg.Text('Novo Login'), sg.InputText()],
+        [sg.Text('Nova Senha'), sg.InputText(password_char='*')],
+        [sg.Button('Salvar Cadastro')],
         [sg.Button('Cancelar')]
         ]
 
@@ -39,7 +39,7 @@ while True:
             janela_principal.un_hide()
             cadastro_aberto = False
             
-        elif event1 == 'SalvarCad':
+        elif event1 == 'Salvar Cadastro':
             sg.popup('Cadastro realizado com sucesso!')
             janela_cadastro.close()
             janela_principal.un_hide()
