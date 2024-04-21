@@ -1,9 +1,9 @@
 import PySimpleGUI as sg
-import utils
+from utils import Cadastro
 
 layot = [
-    [sg.Text('Login'), sg.InputText()],
-    [sg.Text('Senha'), sg.InputText(password_char='*')],
+    [sg.Text('Login'), sg.Input(key='login')],
+    [sg.Text('Senha'), sg.Input(key='senha', password_char='*')],
     [sg.Button('Salvar')],
     [sg.Button('Cadastrar')]
 ]
@@ -21,8 +21,8 @@ while True:
         janela_principal.hide()
 
         layot_cadastro = [
-        [sg.Text('Novo Login'), sg.InputText()],
-        [sg.Text('Nova Senha'), sg.InputText(password_char='*')],
+        [sg.Text('Novo Login'), sg.Input(key='novoLogin')],
+        [sg.Text('Nova Senha'), sg.Input(key='novaSenha', password_char='*')],
         [sg.Button('Salvar Cadastro')],
         [sg.Button('Cancelar')]
         ]
@@ -41,6 +41,12 @@ while True:
             
         elif event1 == 'Salvar Cadastro':
             sg.popup('Cadastro realizado com sucesso!')
+            cadLogin = values1['novoLogin']
+            cadSenha = values1['novaSenha']
+
+            cadastro = Cadastro()
+            cadastro.cadastroPessoa(cadLogin, cadSenha)
+
             janela_cadastro.close()
             janela_principal.un_hide()
             cadastro_aberto = False
