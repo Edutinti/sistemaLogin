@@ -1,5 +1,6 @@
 import PySimpleGUI as sg
 from utils import Cadastro
+from utils import Login
 
 layot = [
     [sg.Text('Login'), sg.Input(key='login')],
@@ -17,6 +18,15 @@ while True:
     
     if event == sg.WIN_CLOSED:
         break
+    elif event == 'Salvar':
+        login = values['login']
+        senha = values['senha']
+        loginStr = str(login)
+        senhaStr = str(senha)
+
+        login = Login()
+        login.validar_login(loginStr, senhaStr)
+
     if event == 'Cadastrar' and not cadastro_aberto:
         janela_principal.hide()
 
@@ -44,8 +54,11 @@ while True:
             cadLogin = values1['novoLogin']
             cadSenha = values1['novaSenha']
 
+            cadLoginStr = str(cadLogin)
+            cadSenhaStr = str(cadSenha)
+
             cadastro = Cadastro()
-            cadastro.cadastroPessoa(cadLogin, cadSenha)
+            cadastro.cadastroPessoa(cadLoginStr, cadSenhaStr)
 
             janela_cadastro.close()
             janela_principal.un_hide()
